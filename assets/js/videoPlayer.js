@@ -5,6 +5,7 @@ const volumeBtn = document.getElementById("jsVolumeBtn");
 const expandBtn = document.getElementById("jsExpandBtn");
 const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
+const volumeRange = document.getElementById("jsVolume");
 
 function handlePlayClick() {
   if (videoPlayer.paused) {
@@ -20,9 +21,11 @@ function handleVolumeClick() {
   if (videoPlayer.muted) {
     videoPlayer.muted = false;
     volumeBtn.innerHTML = '<i class = "fas fa-volume-up"></i>';
+    volumeRange.value = videoPlayer.volume;
   } else {
     videoPlayer.muted = true;
-    volumeBtn.innerHTML = '<i class="fas fa-volume-off"></i>';
+    volumeBtn.innerHTML = '<i class="fas fa-times"></i>';
+    volumeRange.value = 0;
   }
 }
 
@@ -74,7 +77,7 @@ const formatDate = seconds => {
 };
 
 function getCurrentTime() {
-  currentTime.innerHTML = formatDate(videoPlayer.currentTime);
+  currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
 }
 
 function setTotalTime() {
@@ -85,14 +88,33 @@ function setTotalTime() {
 
 function handelEnded() {
   videoPlayer.currentTime = 0;
+  playBtn.innerHTML = '<i class= "fas fa-play"></i>';
+}
+
+function handleDrag(e) {
+  const {
+    target: { value },
+  } = e;
+  videoPlayer.volume = value;
+  if (value > 0.6) {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+  } else if (value > 0.3) {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-down"></i>';
+  } else if (value > 0) {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-off"></i>';
+  } else if (value == 0) {
+    volumeBtn.innerHTML = '<i class="fas fa-times"></i>';
+  }
 }
 
 function init() {
+  videoPlayer.volume = 0.5;
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
   expandBtn.addEventListener("click", goExpandClick);
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handelEnded);
+  volumeRange.addEventListener("input", handleDrag);
 }
 
 if (videoContainer) {
