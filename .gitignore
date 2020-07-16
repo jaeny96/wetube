@@ -93,6 +93,9 @@ _UpgradeReport_Files/
 /deps/openssl/openssl.target.mk
 /deps/zlib/zlib.target.mk
 
+# dotenv environment variables files
+.env
+
 # === Rules for release artifacts ===
 /*.tar.*
 /*.pkg
@@ -138,5 +141,7 @@ _UpgradeReport_Files/
 __pycache__
 .DS_Store
 *~
+uploads
+static
 
 package-lock.json
