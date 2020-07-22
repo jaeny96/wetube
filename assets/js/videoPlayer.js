@@ -1,11 +1,18 @@
 const videoContainer = document.getElementById("jsVideoPlayer");
-let videoPlayer = document.querySelector("#jsVideoPlayer video");
+const videoPlayer = document.querySelector("#jsVideoPlayer video");
 const playBtn = document.getElementById("jsPlayBtn");
 const volumeBtn = document.getElementById("jsVolumeBtn");
 const expandBtn = document.getElementById("jsExpandBtn");
 const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
 const volumeRange = document.getElementById("jsVolume");
+
+const registerView = () => {
+  const videoId = window.location.href.split("/videos/")[1];
+  fetch(`/api/${videoId}/view`, {
+    method: "POST",
+  });
+};
 
 function handlePlayClick() {
   if (videoPlayer.paused) {
@@ -87,6 +94,7 @@ function setTotalTime() {
 }
 
 function handelEnded() {
+  registerView();
   videoPlayer.currentTime = 0;
   playBtn.innerHTML = '<i class= "fas fa-play"></i>';
 }

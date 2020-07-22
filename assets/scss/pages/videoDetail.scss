@@ -35,9 +35,36 @@
     }
   }
   .video__comments {
+    width: 100%;
+    max-width: 850px;
     margin-top: 25px;
-    .video__comment-number {
-      font-size: 15px;
+    .video__comments-comment {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      .video__comment-number {
+        font-size: 15px;
+        margin-right: 50px;
+      }
+      .add__comments {
+        max-width: 600px;
+        width: 100%;
+      }
+    }
+    .video__comments-list {
+      margin-top: 30px;
+      li {
+        &:not(:last-child) {
+          margin-bottom: 30px;
+        }
+        span {
+          padding: 8px 20px;
+          border-radius: 20px;
+          border-bottom-left-radius: 0px;
+          background-color: #ff7675;
+          color: white;
+        }
+      }
     }
   }
 }
