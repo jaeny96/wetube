@@ -54,15 +54,38 @@
     .video__comments-list {
       margin-top: 30px;
       li {
+        &:hover {
+          i {
+            opacity: 1;
+          }
+        }
         &:not(:last-child) {
           margin-bottom: 30px;
         }
-        span {
+        span:first-child {
           padding: 8px 20px;
           border-radius: 20px;
           border-bottom-left-radius: 0px;
           background-color: #ff7675;
           color: white;
+          font-size: 15px;
+        }
+        span:nth-child(2),
+        span:nth-child(3) {
+          padding: 0px 3px;
+        }
+        span:not(:first-child) {
+          font-size: 10px;
+        }
+        span:nth-child(2) {
+          font-size: 12px;
+          font-weight: 600;
+        }
+        i {
+          color: $red;
+          opacity: 0;
+          margin-left: 10px;
+          transition: opacity 0.3s linear;
         }
       }
     }

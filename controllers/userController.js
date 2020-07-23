@@ -90,8 +90,16 @@ export const logout = (req, res) => {
 };
 
 //MY PROFILE
-export const getMe = (req, res) => {
-  res.render("userDetail", { pageTitle: "User Detail", user: req.user });
+export const getMe = async (req, res) => {
+  const {
+    user: { id },
+  } = req;
+  try {
+    const user = await User.findById(id).populate("videos");
+    res.render("userDetail", { pageTitle: "User Detail", user });
+  } catch (error) {
+    res.redirect(routes.home);
+  }
 };
 
 //USER_DETAIL
@@ -100,8 +108,7 @@ export const userDetail = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const user = await User.findById(id).populate("videos");
-    console.log(user);
+    const user = await User.findById(id).populate("videos").populate("creator");
     res.render("userDetail", { pageTitle: "User Detail", user });
   } catch (error) {
     res.redirect(routes.home);

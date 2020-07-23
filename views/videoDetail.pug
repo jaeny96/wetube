@@ -17,7 +17,7 @@ block content
             else 
                 span.video__views #{video.views} views
             .video__author
-                |Uploaded by 
+                |Uploaded by &nbsp; 
                 a(href=routes.userDetail(video.creator.id))=video.creator.name
         .video__comments
             .video__comments-comment
@@ -35,3 +35,12 @@ block content
                 each comment in video.comments.reverse()
                     li
                         span=comment.text
+                        span=comment.creator.name
+                        span=comment.createdAt.getFullYear()
+                        span=comment.createdAt.getMonth()+1
+                        span /
+                        span=comment.createdAt.getDate()
+                        span &nbsp;
+                        if loggedUser && comment.creator.id == loggedUser.id
+                            i.far.fa-times-circle.jsDeleteBtn(data-commentid=comment.id)
+                        

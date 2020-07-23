@@ -39,12 +39,12 @@
         text-transform: uppercase;
         font-size: 13px;
         li {
-          border: 1px solid $dark-red;
           padding: 5px 15px;
-          border-radius: 5px;
         }
         li:not(:last-child) {
+          border: 1px solid $dark-red;
           margin-right: 15px;
+          border-radius: 5px;
         }
         a {
           color: $dark-red;
