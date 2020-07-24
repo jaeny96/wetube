@@ -42,6 +42,7 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
   },
+  "type": "module",
   "scripts": {
     "dev:server": "nodemon --exec babel-node src/init.js --delay 2 --ignore 'scss' --ignore 'static'",
     "dev:assets": "cd src && WEBPACK_ENV=development webpack -w",
