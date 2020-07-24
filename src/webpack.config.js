@@ -1,6 +1,6 @@
 const path = require("path");
-const autoprefixer = require("autoprefixer");
 const ExtractCSS = require("extract-text-webpack-plugin");
+const autoprefixer = require("autoprefixer");
 
 const MODE = process.env.WEBPACK_ENV;
 const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
