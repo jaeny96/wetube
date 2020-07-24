@@ -69,9 +69,31 @@ export const kakaoLogin = passport.authenticate("kakao");
 
 export const kakaoLoginCallback = async (_, __, profile, cb) => {
   const {
-    _json: { id, thumbnail_image, nickname, email },
+    id,
+    username: name,
+    _json: {
+      properties: { profile_image },
+      kakao_account: { email },
+    },
   } = profile;
-  console.log(id, thumbnail_image, nickname, email);
+  console.log(profile);
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      (user.kakaoId = id), user.save();
+      return cb(null, user);
+    } else {
+      const newUser = await User.create({
+        email,
+        name,
+        kakoId: id,
+        avatarUrl: profile_image,
+      });
+      return cb(null, newUser);
+    }
+  } catch (error) {
+    return cb(error);
+  }
 };
 
 export const postKakaoLogIn = (req, res) => {
@@ -80,11 +102,6 @@ export const postKakaoLogIn = (req, res) => {
 
 //LOGOUT
 export const logOut = (req, res) => {
-  req.logout();
-  res.redirect(routes.home);
-};
-
-export const logout = (req, res) => {
   req.logout();
   res.redirect(routes.home);
 };
@@ -118,6 +135,7 @@ export const userDetail = async (req, res) => {
 //EDIT_PROFILE
 export const getEditProfile = (req, res) =>
   res.render("editProfile", { pageTitle: "Edit Profile" });
+
 export const postEditProfile = async (req, res) => {
   const {
     body: { name, email },
@@ -127,7 +145,7 @@ export const postEditProfile = async (req, res) => {
     await User.findByIdAndUpdate(req.user.id, {
       name,
       email,
-      avatarUrl: file ? file.path : req.user.avatarUrl,
+      avatarUrl: file ? file.location : req.user.avatarUrl,
     });
     res.redirect(routes.me);
   } catch (error) {

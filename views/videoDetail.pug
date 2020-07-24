@@ -17,30 +17,29 @@ block content
             else 
                 span.video__views #{video.views} views
             .video__author
-                |Uploaded by &nbsp; 
+                |Uploaded by&nbsp; 
                 a(href=routes.userDetail(video.creator.id))=video.creator.name
-        .video__comments
-            .video__comments-comment
-                form.add__comments#jsAddComment
-                    input(type="text", placeholder="Add a comment")
-                if video.comments.length == 1
-                    span.video__comment-number
-                        span#jsCommentNumber 1 
-                        | comment
-                else
-                    span.video__comment-number
-                        span#jsCommentNumber=video.comments.length  
-                        | comments
+        .video__comments           
+            if video.comments.length == 1
+                span.video__comment-number
+                    span#jsCommentNumber 1 
+                    |&nbsp; comment
+            else
+                span.video__comment-number
+                    span#jsCommentNumber=video.comments.length  
+                    |&nbsp; comments
+            if loggedUser
+                .video__comments-comment#jsComment     
+                    form.add__comments#jsAddComment
+                        input(type="text", placeholder="Add a comment")
+                    span.comment__user=loggedUser.name    
             ul.video__comments-list#jsCommentList
                 each comment in video.comments.reverse()
                     li
                         span=comment.text
                         span=comment.creator.name
-                        span=comment.createdAt.getFullYear()
-                        span=comment.createdAt.getMonth()+1
-                        span /
-                        span=comment.createdAt.getDate()
+                        span #{moment(comment.createdAt,"YYYYMMDD").fromNow()}
                         span &nbsp;
-                        if loggedUser && comment.creator.id == loggedUser.id
+                        if loggedUser && comment.creator.id === loggedUser.id
                             i.far.fa-times-circle.jsDeleteBtn(data-commentid=comment.id)
                         

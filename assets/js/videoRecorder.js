@@ -23,7 +23,6 @@ const stopRecording = () => {
 
 const startRecording = () => {
   videoRecorder = new MediaRecorder(streamObject);
-  console.log(videoRecorder);
   videoRecorder.start();
   videoRecorder.addEventListener("dataavailable", handleVideoData);
   recordBtn.addEventListener("click", stopRecording);

@@ -38,17 +38,30 @@
     width: 100%;
     max-width: 850px;
     margin-top: 25px;
+    .video__comment-number {
+      font-size: 15px;
+    }
     .video__comments-comment {
+      margin-top: 15px;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      .video__comment-number {
-        font-size: 15px;
-        margin-right: 50px;
-      }
+
       .add__comments {
-        max-width: 600px;
+        max-width: 750px;
         width: 100%;
+        input {
+          border-radius: 0;
+          border-bottom: 1px solid #e0e0e0;
+        }
+      }
+      .comment__user {
+        color: #eaeced;
+        font-weight: 600;
+        padding: 10px;
+        margin-right: 30px;
+        border-radius: 50%;
+        background-color: #455a64;
       }
     }
     .video__comments-list {
@@ -82,6 +95,7 @@
           font-weight: 600;
         }
         i {
+          cursor: pointer;
           color: $red;
           opacity: 0;
           margin-left: 10px;
