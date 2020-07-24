@@ -4,7 +4,6 @@
   "description": "Cloning Youtube with Vanilla and NodeJS",
   "main": "index.js",
   "author": "Jisu",
-  "type": "module",
   "dependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.2",
@@ -19,6 +18,7 @@
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
     "css-loader": "^3.6.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -44,7 +44,7 @@
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
-    "dev:server": "nodemon --exec babel-node src/init.js --delay 2 --ignore 'scss' --ignore 'static'",
+    "dev:server": "nodemon --exec babel-node src/init.js --delay 2 --ignore '.scss' --ignore 'static' ",
     "dev:assets": "cd src && WEBPACK_ENV=development webpack -w",
     "build:assets": "cd src && WEBPACK_ENV=production webpack",
     "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.js'",
@@ -57,7 +57,6 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
-    "dotenv": "^8.2.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.21.2",
