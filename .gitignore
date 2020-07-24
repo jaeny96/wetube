@@ -108,5 +108,6 @@ dist
 package-lock.json
 uploads
 static
+.env
 .DS_Store
 build
