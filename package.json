@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "Jisu",
   "dependencies": {
+    "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.2",
     "@babel/node": "^7.10.1",
     "@babel/polyfill": "^7.10.4",
@@ -42,10 +43,16 @@
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
-    "dev:server": "nodemon --exec babel-node init.js --delay 2 --ignore 'scss' --ignore 'static'",
-    "dev:assets": "cross-env WEBPACK_ENV=development webpack -w",
-    "build:assets": "cross-env WEBPACK_ENV=production webpack",
-    "tunnel": "ngrok http 4000"
+    "dev:server": "nodemon --exec babel-node src/init.js --delay 2 --ignore 'scss' --ignore 'static'",
+    "dev:assets": "cd src && cross-env WEBPACK_ENV=development webpack -w",
+    "build:assets": "cd src && cross-env WEBPACK_ENV=production webpack",
+    "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.js'",
+    "copyAll": "cp -R src/static build && cp -R src/views build",
+    "build": "npm run build:server && npm run build:assets && npm run copyAll",
+    "prebuild": "rm -rf build",
+    "tunnel": "ngrok http 4000",
+    "start": "node build/init.js",
+    "prestart": "npm run build"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
