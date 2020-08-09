@@ -102,7 +102,7 @@ export const postKakaoLogIn = (req, res) => {
 
 //LOGOUT
 export const logOut = (req, res) => {
-  req.logOut();
+  req.logout();
   res.redirect(routes.home);
 };
 
