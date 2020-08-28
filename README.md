@@ -18,18 +18,18 @@ Cloning Youtube with Vanilla and NodeJS
 ## Technologies
 
 1. NodeJS
-*ES6
-3 Express
-4 Pug
-5 Passport
-6 AJAX
-7 Webpack
-8 SCSS
-9 MongoDB
-10 Mongoose
-11 AWS S3
-12 MongoDB Atlas
-13 Heroku - [ ]
+2. ES6
+3. Express
+4. Pug
+5. Passport
+6. AJAX
+7. Webpack
+8. SCSS
+9. MongoDB
+10. Mongoose
+11. AWS S3
+12. MongoDB Atlas
+13. Heroku - [ ]
 
 ## Features
 
