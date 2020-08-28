@@ -17,7 +17,7 @@ Cloning Youtube with Vanilla and NodeJS
  
 ## Technologies
 
-*NodeJS
+1. NodeJS
 *ES6
 3 Express
 4 Pug
