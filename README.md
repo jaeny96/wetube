@@ -15,7 +15,7 @@ Cloning Youtube with Vanilla and NodeJS
  - [X] Video Detail
  - [X] Edit Video
  
-##Technologies
+## Technologies
 
 1 NodeJS
 2 ES6
@@ -31,7 +31,7 @@ Cloning Youtube with Vanilla and NodeJS
 12 MongoDB Atlas
 13 Heroku - [ ]
 
-##Features
+## Features
 
 1 MVC
 2 Templates
