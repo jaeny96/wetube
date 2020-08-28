@@ -29,18 +29,18 @@ Cloning Youtube with Vanilla and NodeJS
 10. Mongoose
 11. AWS S3
 12. MongoDB Atlas
-13. Heroku - [ ]
+13. Heroku - []
 
 ## Features
 
-1 MVC
-2 Templates
-3 User Authentication
-4 Social Login
-5 Video Upload
-6 Search Video
-7 AJAX Comments
-8 View Registering
-9 User Profile / Log In / Log Out
-10 Database Models and Relationships
-11 Deployment to Heroku - [ ]
+1. MVC
+2. Templates
+3. User Authentication
+4. Social Login
+5. Video Upload
+6. Search Video
+7. AJAX Comments
+8. View Registering
+9. User Profile / Log In / Log Out
+10. Database Models and Relationships
+11. Deployment to Heroku - []
